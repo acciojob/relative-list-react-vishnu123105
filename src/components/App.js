@@ -1,14 +1,16 @@
 import React from 'react'
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ItemList from "./ItemList";
+import ItemDetail from "./ItemDetail";
 const App = () => {
-  const relatives = ['Grandparents', 'Uncle and Aunt', 'Cousins', 'Sister\'s Family', 'Family Friends'];
-
+   
   return (
-    <ol key="relativeList">
-      {relatives.map((relative, index) => (
-        <li key={`relativeListItem${index + 1}`}>{relative}</li>
-      ))}
-    </ol>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={ItemList} />
+        <Route path="/items/:id" component={ItemDetail} />
+      </Switch>
+    </Router>
   );
 };
 
